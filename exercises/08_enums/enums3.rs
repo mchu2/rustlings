@@ -48,7 +48,7 @@ impl State {
         match message {
             Message::ChangeColor(r,g,b) => self.change_color((r,g,b)),
             Message::Quit => self.quit(),
-            Message::Echo(string) => self.echo(string),
+            Message::Echo(s) => self.echo(s),
             Message::Move(pt) => self.move_position(pt)
         }
     }

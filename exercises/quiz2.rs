@@ -33,17 +33,12 @@ mod my_module {
     pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> {
         let mut output: Vec<String> = vec![];
         for (string, command) in input.iter() {
-            match command {
-                Command::Uppercase => output.push(string.to_uppercase()),
-                Command::Trim => output.push(string.trim().to_string()),
-                Command::Append(n) => {
-                    let mut string = string.clone();
-                    for _ in 0..*n {
-                        string.push_str("bar");
-                    }
-                    output.push(string);
-                }
-            }
+            let s = match command {
+                Command::Uppercase => string.to_uppercase(),
+                Command::Trim => string.trim().into(),
+                Command::Append(n) => string.to_owned() + &"bar".repeat(*n),
+            };
+            output.push(s);
         }
         output
     }
