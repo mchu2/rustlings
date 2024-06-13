@@ -19,7 +19,7 @@ fn calculate_price_of_apples(qty: i32) -> i32 {
     if qty <= 40 {
         return qty * 2;
     } else {
-        return qty * 1;
+        return qty;
     }
 }
 
